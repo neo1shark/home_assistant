@@ -1,0 +1,14 @@
+version: '3'
+services: #ชื่อ service
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    ports:
+      - 8123:8123 
+    volumes:
+      - ./ha-config:/config
+    environment: #ค่า environment ต่างๆ
+      - TZ=Asia/Bangkok #กำหนด timezone ให้ HA
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
